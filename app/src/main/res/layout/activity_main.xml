@@ -30,7 +30,6 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 bind:dino_itemLayout="@{@layout/item_cat}"
-                bind:dino_itemSpace="@{`4dp`}"
                 bind:dino_items="@{vm.catImageItems}"
                 tools:itemCount="8"
                 tools:listitem="@layout/item_cat" />
