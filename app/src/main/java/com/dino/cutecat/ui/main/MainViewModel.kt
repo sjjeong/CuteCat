@@ -13,6 +13,8 @@ class MainViewModel(private val apiService: ApiService) : DinoViewModel() {
     private val _catImageItems = MutableLiveData<MutableList<CatImageResponse>>(mutableListOf())
     val catImageItems: LiveData<MutableList<CatImageResponse>> get() = _catImageItems
 
+    private var page = 0
+
     init {
         loadCatImage()
     }
@@ -21,10 +23,16 @@ class MainViewModel(private val apiService: ApiService) : DinoViewModel() {
         viewModelScope.launch {
             showLoading()
             _catImageItems.value = _catImageItems.value?.apply {
-                addAll(apiService.getImages())
+                addAll(apiService.getImages(page = page++))
             }
             hideLoading()
         }
+    }
+
+    fun refresh() {
+        page = 0
+        _catImageItems.value?.clear()
+        loadCatImage()
     }
 
 }

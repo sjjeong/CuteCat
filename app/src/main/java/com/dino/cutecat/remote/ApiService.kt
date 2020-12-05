@@ -9,7 +9,7 @@ interface ApiService {
     @GET("v1/images/search")
     suspend fun getImages(
         @Query("size") size: String = "full",
-        @Query("limit") limit: Int = 100,
+        @Query("limit") limit: Int = 20,
         @Query("page") page: Int = 0
     ): List<CatImageResponse>
 

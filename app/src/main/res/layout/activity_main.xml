@@ -15,7 +15,7 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        bind:onRefreshListener="@{() -> vm.loadCatImage()}"
+        bind:onRefreshListener="@{() -> vm.refresh()}"
         bind:refreshing="@{vm.liveLoading}"
         tools:context=".ui.main.MainActivity">
 
@@ -31,6 +31,8 @@
                 app:spanCount="2"
                 bind:dino_itemLayout="@{@layout/item_cat}"
                 bind:dino_items="@{vm.catImageItems}"
+                bind:dino_onLoad="@{() -> vm.loadCatImage()}"
+                bind:dino_threshold="@{10}"
                 tools:itemCount="8"
                 tools:listitem="@layout/item_cat" />
 
